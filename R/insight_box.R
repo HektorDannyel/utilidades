@@ -1,10 +1,8 @@
 #' @export
 insight_box <- function(string){
 
-  cat("<div class = \"insight\">")
+  string <- div(string, class = "insight")
 
-  cat(string)
-
-  cat("</div>")
+  return(string)
 
 }
