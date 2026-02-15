@@ -49,7 +49,6 @@ custom_palette <- function(geom){
 
 }
 
-#' @export
 summary_box <- function(string){
 
   cat("<div class = \"summary-box\">")
@@ -60,7 +59,6 @@ summary_box <- function(string){
 
 }
 
-#' @export
 insight_box <- function(string){
 
   cat("<div class = \"insight\">")
@@ -71,7 +69,6 @@ insight_box <- function(string){
 
 }
 
-#' @export
 conclusion_box <- function(string){
 
   cat("<div class = \"conclusion\">")
