@@ -1,4 +1,6 @@
 #' @export
+#' @import dplyr
+#' @importFrom stringr str_remove
 custom_palette <- function(geom){
 
   colors <- c("#2F5597", "#C96A12", "#1B5E20", "#CC4125", "#483F63", "#B7950B",
