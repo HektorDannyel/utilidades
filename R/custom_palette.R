@@ -55,6 +55,8 @@ custom_palette <- function(geom){
 
       detect_geom <- as.character(geom@layers[[i]]$constructor)
 
+      if(any(detect_geom == "annotate")) next
+
       if(any(str_detect(detect_geom, "aes"))){
 
         aes_geom <- detect_geom[2]
