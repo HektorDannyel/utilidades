@@ -86,13 +86,6 @@ custom_palette <- function(geom){
 
       }
 
-      eval(parse(text = paste0(
-
-        "geom <- geom + ",
-        string
-
-      )))
-
     }
 
   }
