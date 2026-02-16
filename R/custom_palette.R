@@ -1,6 +1,6 @@
 #' @export
 #' @import dplyr
-#' @importFrom stringr str_remove
+#' @import stringr
 custom_palette <- function(geom){
 
   colors <- c("#2F5597", "#C96A12", "#1B5E20", "#CC4125", "#483F63", "#B7950B",
@@ -44,6 +44,64 @@ custom_palette <- function(geom){
       "geom <- geom + ",
       fill_string
     )))
+
+  }
+
+  if(fill == "NULL" & colour == "NULL"){
+
+    layers <- geom@layers
+
+    for(i in 1:length(layers)){
+
+      detect_geom <- as.character(geom@layers[[i]]$constructor)
+
+      if(any(str_detect(detect_geom, "aes"))){
+
+        aes_geom <- detect_geom[2]
+        detect_geom <- detect_geom[1]
+
+        if(str_detect(detect_geom, "bar|histogram|map")){
+
+          string <- paste0(
+            detect_geom, "(", aes_geom, ", fill = '", colors[i], "')"
+          )
+
+        } else {
+
+          string <- paste0(
+            detect_geom, "(", aes_geom, ", color = '", colors[i], "')"
+          )
+
+        }
+
+      } else {
+
+        detect_geom <- detect_geom[str_detect(detect_geom, "geom")]
+
+        if(str_detect(detect_geom, "bar|histogram|map")){
+
+          string <- paste0(
+            detect_geom, "(fill = '", colors[i], "')"
+          )
+
+        } else {
+
+          string <- paste0(
+            detect_geom, "(color = '", colors[i], "')"
+          )
+
+        }
+
+      }
+
+      eval(parse(text = paste0(
+
+        "geom <- geom + ",
+        string
+
+      )))
+
+    }
 
   }
 
