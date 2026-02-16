@@ -62,15 +62,11 @@ custom_palette <- function(geom){
 
         if(str_detect(detect_geom, "bar|histogram|map")){
 
-          string <- paste0(
-            detect_geom, "(", aes_geom, ", fill = '", colors[i], "')"
-          )
+          geom@layers[[i]]$aes_params <- list(fill = colors[i])
 
         } else {
 
-          string <- paste0(
-            detect_geom, "(", aes_geom, ", color = '", colors[i], "')"
-          )
+          geom@layers[[i]]$aes_params <- list(colour = colors[i])
 
         }
 
@@ -80,15 +76,11 @@ custom_palette <- function(geom){
 
         if(str_detect(detect_geom, "bar|histogram|map")){
 
-          string <- paste0(
-            detect_geom, "(fill = '", colors[i], "')"
-          )
+          geom@layers[[i]]$aes_params <- list(fill = colors[i])
 
         } else {
 
-          string <- paste0(
-            detect_geom, "(color = '", colors[i], "')"
-          )
+          geom@layers[[i]]$aes_params <- list(colour = colors[i])
 
         }
 
