@@ -1,6 +1,6 @@
 #' @export
 #' @import kableExtra
-custom_kable <- function(table, bg_col = 1, test_col = NULL, alpha = 0.05, ...){
+custom_kable <- function(table, bg_col = 1, test_col = NULL, alpha = 0.05, header_above = NULL, ...){
 
   colors <- c("#2F5597", "#C96A12", "#1B5E20", "#CC4125", "#483F63", "#B7950B",
               "#45818E", "#E69138", "#3FA34D", "#CC7876", "#8E7CC3", "#C9B458")
@@ -20,6 +20,13 @@ custom_kable <- function(table, bg_col = 1, test_col = NULL, alpha = 0.05, ...){
     kbl(align = "c", escape = escape, ...) |>
     kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive")) |>
     row_spec(0, background = colors[bg_col], color = "#FFFFFF")
+
+  if(!is.null(header_above)){
+
+    table <- table |>
+      add_header_above(header_above, background = colors[bg_col], color = "#FFFFFF")
+
+  }
 
   return(table)
 
