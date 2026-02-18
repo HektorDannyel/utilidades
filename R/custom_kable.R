@@ -10,7 +10,7 @@ custom_kable <- function(table, bg_col = 1, test_col = NULL, alpha = 0.05, heade
   if(!is.null(test_col)){
 
     table <- table |>
-      mutate_at(vars(test_col), ~cell_spec(round(., 4), color = ifelse(. < alpha, "#000000", "#45818E")))
+      mutate_at(vars(test_col), ~cell_spec(round(., 4), color = ifelse(. < alpha, "#45818E", "#000000")))
 
     escape <- FALSE
 
